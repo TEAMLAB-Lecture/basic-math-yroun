@@ -3,7 +3,7 @@
 #######################
 
 """
-여기서 간단한 수학을 하는 프로그램을 만들것입니다. 
+여기서 간단한 수학을 하는 프로그램을 만들것입니다.
 """
 
 
@@ -24,7 +24,7 @@ def get_greatest(number_list):
             >>> bm.get_greatest(number_list)
             99
     """
-    greatest_number = None
+    greatest_number = max(number_list)
     return greatest_number
 
 
@@ -45,7 +45,7 @@ def get_smallest(number_list):
             >>> bm.get_smallest(number_list)
             11
     """
-    smallest_number = None
+    smallest_number = min(number_list)
     return smallest_number
 
 
@@ -66,7 +66,7 @@ def get_mean(number_list):
             >>> bm.get_mean(number_list)
             47
     """
-    mean = None
+    mean = sum(number_list) / max(1, len(number_list))
     return mean
 
 
@@ -90,5 +90,14 @@ def get_median(number_list):
             >>> bm.get_median(number_list2)
             35.5
     """
-    median = None
+    # from statistics import median
+    # return median(number_list)
+    n = len(number_list)
+    if n == 0:
+        return 0
+    if n == 1:
+        return number_list[0]
+    tmp = sorted(number_list)
+    mid = n // 2
+    median = (tmp[mid] + tmp[mid - 1]) / 2 if n % 2 == 0 else tmp[mid]
     return median
